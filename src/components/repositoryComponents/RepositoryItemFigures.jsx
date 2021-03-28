@@ -1,6 +1,6 @@
 import React from "react";
-import Text from "../Text";
 import { View, StyleSheet } from "react-native";
+import Text from "../Text";
 
 const styles = StyleSheet.create({
   figuresContainer: {

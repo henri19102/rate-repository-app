@@ -2,8 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import RepositoryItemFigures from "./RepositoryItemFigures";
 import RepositoryItemInfo from "./RepositoryItemInfo";
-import theme from '../../theme';
-
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
   itemContainer: {
