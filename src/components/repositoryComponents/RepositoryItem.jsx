@@ -1,23 +1,24 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, Button } from "react-native";
+import * as Linking from "expo-linking";
+import { myStyles } from "../../styles/myStyles";
 import RepositoryItemFigures from "./RepositoryItemFigures";
 import RepositoryItemInfo from "./RepositoryItemInfo";
-import theme from "../../theme";
 
-const styles = StyleSheet.create({
-  itemContainer: {
-    backgroundColor: theme.colors.snow,
-    paddingHorizontal: 5,
-    paddingVertical: 5,
-    flexDirection: "column",
-  },
-});
+const RepositoryItem = ({ item, isSingleView }) => {
+  const openUrl = () => {
+    Linking.openURL(`${item.url}`);
+  };
 
-const RepositoryItem = ({ item }) => {
   return (
-    <View style={styles.itemContainer}>
+    <View style={myStyles.itemContainer}>
       <RepositoryItemInfo item={item} />
       <RepositoryItemFigures item={item} />
+      {isSingleView === true && (
+        <View style={myStyles.buttonStyle}>
+          <Button onPress={openUrl} title="Open in GitHub"></Button>
+        </View>
+      )}
     </View>
   );
 };

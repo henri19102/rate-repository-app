@@ -1,48 +1,40 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import Text from "../Text";
+import { myStyles } from "../../styles/myStyles";
 
-const styles = StyleSheet.create({
-  figuresContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    paddingVertical: 10,
-  },
-
-  detailsContainer: {
-    flexDirection: "column",
-    marginHorizontal: 10,
-  },
-});
+export const checkIfThousand = (value) => {
+  return value >= 1000 ? `${(value / 1000).toFixed(1)}k` : `${value}`;
+};
 
 const RepositoryItemFigures = ({ item }) => {
-  const checkIfThousand = (value) => {
-    if (value >= 1000) {
-      value = value * 0.001;
-      return `${value.toFixed(1)}k`;
-    }
-    return value;
-  };
-
   return (
-    <View style={styles.figuresContainer}>
-      <View style={styles.detailsContainer}>
-        <Text fontWeight="bold">{checkIfThousand(item.stargazersCount)}</Text>
+    <View style={myStyles.figuresContainer}>
+      <View style={myStyles.detailsContainer}>
+        <Text testID="stargazersCount" fontWeight="bold">
+          {checkIfThousand(item.stargazersCount)}
+        </Text>
         <Text>Stars</Text>
       </View>
 
-      <View style={styles.detailsContainer}>
-        <Text fontWeight="bold">{checkIfThousand(item.forksCount)}</Text>
+      <View style={myStyles.detailsContainer}>
+        <Text testID="forksCount" fontWeight="bold">
+          {checkIfThousand(item.forksCount)}
+        </Text>
         <Text>Forks</Text>
       </View>
 
-      <View style={styles.detailsContainer}>
-        <Text fontWeight="bold">{checkIfThousand(item.reviewCount)}</Text>
+      <View style={myStyles.detailsContainer}>
+        <Text testID="reviewCount" fontWeight="bold">
+          {checkIfThousand(item.reviewCount)}
+        </Text>
         <Text>Review</Text>
       </View>
 
-      <View style={styles.detailsContainer}>
-        <Text fontWeight="bold">{checkIfThousand(item.ratingAverage)}</Text>
+      <View style={myStyles.detailsContainer}>
+        <Text testID="ratingAverage" fontWeight="bold">
+          {checkIfThousand(item.ratingAverage)}
+        </Text>
         <Text>Rating</Text>
       </View>
     </View>

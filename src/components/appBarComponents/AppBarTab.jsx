@@ -1,21 +1,24 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
-import { Link } from "react-router-native";
-import theme from "../../theme";
-
-const styles = StyleSheet.create({
-  texts: {
-    color: theme.colors.snow,
-    paddingHorizontal: 5,
-    paddingVertical: 5,
-  },
-});
+import { Text, TouchableOpacity } from "react-native";
+import { useHistory } from "react-router-native";
+import { myStyles } from "../../styles/myStyles";
 
 const AppBarTab = ({ name, route, signOut }) => {
+  const history = useHistory();
+
+  const changePage = () => {
+    if (signOut) {
+      signOut();
+    }
+    history.push(`${route}`);
+  };
+
   return (
-    <Link onPress={signOut} to={route}>
-      <Text style={styles.texts}>{name}</Text>
-    </Link>
+    <>
+      <TouchableOpacity onPress={changePage}>
+        <Text style={myStyles.texts}>{name}</Text>
+      </TouchableOpacity>
+    </>
   );
 };
 

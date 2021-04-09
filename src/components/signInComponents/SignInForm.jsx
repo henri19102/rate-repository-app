@@ -1,20 +1,24 @@
 import React from "react";
-import { Button, View, StyleSheet } from "react-native";
+import { Button, View } from "react-native";
 import FormikTextInput from "../FormikTextInput";
-
-const styles = StyleSheet.create({
-  itemPadding: {
-    marginVertical: 15,
-  },
-});
+import { myStyles } from "../../styles/myStyles";
 
 const SignInForm = ({ handleSubmit }) => {
   return (
     <View>
-      <FormikTextInput name="username" placeholder="username" />
-      <FormikTextInput name="password" placeholder="password" secureTextEntry />
-      <View style={styles.itemPadding}>
-        <Button onPress={handleSubmit} title="Sign in"></Button>
+      <FormikTextInput
+        testID="username"
+        name="username"
+        placeholder="username"
+      />
+      <FormikTextInput
+        testID="password"
+        name="password"
+        placeholder="password"
+        secureTextEntry
+      />
+      <View style={myStyles.itemPadding}>
+        <Button testID="signIn" onPress={handleSubmit} title="Sign in"></Button>
       </View>
     </View>
   );

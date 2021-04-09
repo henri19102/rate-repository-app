@@ -1,29 +1,37 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { Route, Switch, Redirect } from "react-router-native";
-import RepositoryList from "./repositoryComponents/RepositoryList";
+import RepositoryListContainer from "./repositoryComponents/RepositoryListContainer";
+import SingleRepository from "./repositoryComponents/SingleRepository";
 import AppBar from "./appBarComponents/AppBar";
 import SignIn from "./signInComponents/SignIn";
-import theme from "../theme";
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    flexShrink: 1,
-    backgroundColor: theme.colors.grey,
-  },
-});
+import SignUp from "./signUpComponents/SignUp";
+import Review from "./reviewComponents/Review";
+import MyReviews from "./reviewComponents/MyReviews";
+import { myStyles } from "../styles/myStyles";
 
 const Main = () => {
   return (
-    <View style={styles.container}>
+    <View style={myStyles.container}>
       <AppBar />
       <Switch>
         <Route path="/" exact>
-          <RepositoryList />
+          <RepositoryListContainer />
         </Route>
         <Route path="/signin" exact>
           <SignIn />
+        </Route>
+        <Route path="/signup" exact>
+          <SignUp />
+        </Route>
+        <Route path="/createreview" exact>
+          <Review />
+        </Route>
+        <Route path="/reviews" exact>
+          <MyReviews />
+        </Route>
+        <Route path="/:id" exact>
+          <SingleRepository />
         </Route>
         <Redirect to="/" />
       </Switch>
